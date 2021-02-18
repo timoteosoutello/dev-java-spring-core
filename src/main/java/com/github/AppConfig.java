@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
 @ComponentScan(basePackages = { "com.github" })
-@PropertySource("classpath:application.properties")
+@PropertySources({ @PropertySource(value = "file:${app.home}/application.properties", ignoreResourceNotFound = true),
+		@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true) })
 public class AppConfig {
 
 	private JdbcTemplate jdbcTemplateDS1;
