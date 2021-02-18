@@ -26,20 +26,28 @@ public class DatasourceConfig {
 	@Bean("datasource1")
 	public DataSource dataSource1() {
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-		driverManagerDataSource.setUrl(environment.getProperty(DS_1_URL));
-		driverManagerDataSource.setUsername(environment.getProperty(DS_1_USER));
-		driverManagerDataSource.setPassword(environment.getProperty(DS_1_PASSWORD));
-		driverManagerDataSource.setDriverClassName(environment.getProperty(DS_1_DRIVER));
+		try {
+			driverManagerDataSource.setUrl(environment.getProperty(DS_1_URL));
+			driverManagerDataSource.setUsername(environment.getProperty(DS_1_USER));
+			driverManagerDataSource.setPassword(environment.getProperty(DS_1_PASSWORD));
+			driverManagerDataSource.setDriverClassName(environment.getProperty(DS_1_DRIVER));
+		} catch (Exception e) {
+			System.out.println("Error initializing datasource ");
+		}
 		return driverManagerDataSource;
 	}
 
 	@Bean("datasource2")
 	public DataSource dataSource2() {
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-		driverManagerDataSource.setUrl(environment.getProperty(DS_2_URL));
-		driverManagerDataSource.setUsername(environment.getProperty(DS_2_USER));
-		driverManagerDataSource.setPassword(environment.getProperty(DS_2_PASSWORD));
-		driverManagerDataSource.setDriverClassName(environment.getProperty(DS_2_DRIVER));
+		try {
+			driverManagerDataSource.setUrl(environment.getProperty(DS_2_URL));
+			driverManagerDataSource.setUsername(environment.getProperty(DS_2_USER));
+			driverManagerDataSource.setPassword(environment.getProperty(DS_2_PASSWORD));
+			driverManagerDataSource.setDriverClassName(environment.getProperty(DS_2_DRIVER));
+		} catch (Exception e) {
+			System.out.println("Error initializing datasource ");
+		}
 		return driverManagerDataSource;
 	}
 }
